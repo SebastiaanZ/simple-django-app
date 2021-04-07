@@ -1,0 +1,9 @@
+# ignore everything
+**
+
+# except what we need
+!/simple_django_app/
+!/manage.py
+!/poetry.lock
+!/pyproject.toml
+!/entrypoint.sh

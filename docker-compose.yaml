@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.2-alpine
+    ports:
+      - "127.0.0.1:7777:5432"
+    environment:
+      POSTGRES_DB: database_name
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
+    networks:
+     simple-django-app:
+
+  django_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+      args:
+        - DEV=true
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on: [postgres]
+    environment:
+      - SECRET_KEY=not-suitable-for-deployment
+      - DATABASE_URL=postgres://db_user:db_password@postgres:5432/database_name
+      - STATIC_ROOT=/app/staticfiles
+      - DEBUG=1
+    volumes:
+      - .:/app/simple_django_app:ro
+    networks:
+     simple-django-app:
+
+networks:
+  simple-django-app:
