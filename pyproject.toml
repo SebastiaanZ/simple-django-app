@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "simple-django-app"
+version = "0.1.0"
+description = "A simple project to demonstrate Django"
+authors = ["Sebastiaan Zeeff <sebastiaan.zeeff@ordina.nl>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^3.2"
+django-environ = "^0.4.5"
+psycopg2-binary = "^2.8.6"
+coverage = "^5.5"
+whitenoise = "^5.2.0"
+djangorestframework = "^3.12.4"
+Markdown = "^3.3.4"
+django-filter = "^2.4.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.0"
+flake8-annotations = "^2.6.2"
+flake8-tidy-imports = "^4.2.1"
+flake8-docstrings = "^1.6.0"
+flake8-string-format = "^0.3.0"
+flake8-bugbear = "^21.4.3"
+pep8-naming = "^0.11.1"
+black = "^20.8b1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
