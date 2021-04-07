@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% block title %}List of Articles{% endblock %}
+
+
+{% block content %}
+<h1>Articles</h1>
+<ul>
+{% for article in articles %}
+    <li>
+        {{ article.pub_date | date:"Y-m-d H:i:s" }} -
+        <a href="{% url 'blog:article-detail' article.pk %}">{{ article.title }}</a>
+        - <a href="{% url 'blog:article-update' article.pk %}">edit</a>
+        - <a href="{% url 'blog:article-delete' article.pk %}">delete</a>
+    </li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

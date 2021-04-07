@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+
+{% block content %}
+<h1>{{ article.title }}</h1>
+<ul>
+    <li>Publication date: {{ article.pub_date | date:"Y-m-d H:i:s" }}</li>
+    <li>Tags: {{ article.tags.all | join:", " }}</li>
+</ul>
+<p>
+    {{ article.body }}
+</p>
+<p>
+    <a href="{% url 'blog:article-update' article.pk %}">Edit this article.</a>
+</p>
+<p>
+    <a href="{% url 'blog:article-delete' article.pk %}">Delete this article.</a>
+</p>
+<p>
+    <a href="{% url 'blog:article-list' %}">Back to the list of articles.</a>
+</p>
+
+{% endblock %}

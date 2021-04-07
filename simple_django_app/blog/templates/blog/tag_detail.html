@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+
+{% block title %}List of Tags{% endblock %}
+
+
+{% block content %}
+    {% with total=tag.articles.count %}
+        <h1>Tag: {{ tag.slug }} ({{ total }} article{{ total|pluralize }})</h1>
+    {% endwith %}
+    <ul>
+        {% for article in tag.articles.all %}
+            <li>
+                {{ article.pub_date | date:"Y-m-d H:i:s" }} -
+                <a href="{% url 'blog:article-detail' article.pk %}">{{ article.title }}</a>
+                - <a href="{% url 'blog:article-update' article.pk %}">edit</a>
+                - <a href="{% url 'blog:article-delete' article.pk %}">delete</a>
+            </li>
+        {% empty %}
+            <li>No articles with this tag yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Blog | {% block title %}{% endblock %}</title>
+</head>
+<body>
+  {%  include 'base/nav.html' %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

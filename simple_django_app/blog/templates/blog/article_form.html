@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %}Create Article{% endblock %}
+
+{% block content %}
+    {% if article is None %}
+        <h1>Create Article</h1>
+    {% else %}
+        <h1>Edit Article</h1>
+    {% endif %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

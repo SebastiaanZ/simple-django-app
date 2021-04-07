@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+{% block title %}List of Tags{% endblock %}
+
+
+{% block content %}
+<h1>Tags</h1>
+<ul>
+{% for tag in tags %}
+    {% with total=tag.articles.count %}
+        <li>
+            <a href="{% url 'blog:tag-detail' tag.slug %}">{{ tag.slug }}</a> -
+            ({{ total }} article{{ total|pluralize }})
+        </li>
+    {% endwith %}
+{% empty %}
+    <li>No tags yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}
